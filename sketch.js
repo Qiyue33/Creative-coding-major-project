@@ -164,6 +164,17 @@ class Autumn extends Season {
     noStroke();
     fill(200, 100, 50, 150); 
     rect(this.x, this.cy + 120, this.width, this.height - 360);
+
+    this.drawGrass();
+  }
+
+  drawGrass(){
+    for (let i = 0; i < 50000; i++) {
+    stroke(200, 160, 30, 150);
+    let gx= this.x + random(this.width);
+    let gy= this.cy + 120 + random(this.height);
+     line(gx, gy, gx + random(-3, 3), gy - random(30, 50));
+  }
   }
 
   drawBase() {
@@ -174,9 +185,6 @@ class Autumn extends Season {
     rect(this.cx - 80, this.cy + 60, 80, 40);
     fill(200, 80, 0); 
     rect(this.cx, this.cy + 60, 40, 40);
-   
-    this.doubleColorCircle(this.cx - 60, this.cy + 100, 40, color(255, 200, 0), color(200, 80, 0));
-    this.doubleColorCircle(this.cx, this.cy + 100, 40, color(200, 80, 0), color(255, 200, 0));
   }
 
   drawStem() {
@@ -185,9 +193,7 @@ class Autumn extends Season {
       this.doubleColorCircle(this.cx - 20, y, 40, color(255, 200, 0), color(200, 80, 0));
     }
   }
-
   drawBranches() {
-   
     this.doubleColorCircle(this.cx - 80, this.cy - 40, 40, color(255, 200, 0), color(200, 80, 0));
     this.doubleColorCircle(this.cx - 130, this.cy - 40, 40, color(200, 80, 0), color(255, 200, 0));
     this.doubleColorCircle(this.cx + 40, this.cy - 40, 40, color(255, 200, 0), color(200, 80, 0));
