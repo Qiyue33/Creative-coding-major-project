@@ -148,23 +148,32 @@ class Summer extends Season {
     this.doubleColorCircle(this.cx + 40, this.cy - 40, 40, color(0, 100, 200), color(255, 140, 0));
     this.doubleColorCircle(this.cx + 90, this.cy - 80, 40, color(255, 140, 0), color(0, 100, 200));
   }
+
 }
 
 
 // Autumn
 class Autumn extends Season {
+  
   draw() {
+    this.drawBackground();// Autumn background
     this.drawGround();
     this.drawBase();
     this.drawStem();
     this.drawBranches();
   }
 
+  drawBackground(){
+    noStroke();
+    fill(230,200,130)
+    rect(this.x, this.y, this.width, this.height);
+
+  }
+
   drawGround() {
     noStroke();
     fill(200, 100, 50, 150); 
     rect(this.x, this.cy + 120, this.width, this.height - 360);
-
     this.drawGrass();
   }
 
@@ -199,6 +208,7 @@ class Autumn extends Season {
     this.doubleColorCircle(this.cx + 40, this.cy - 40, 40, color(255, 200, 0), color(200, 80, 0));
     this.doubleColorCircle(this.cx + 80, this.cy - 80, 40, color(200, 80, 0), color(255, 200, 0));
   }
+  
 }
 
 // winter
@@ -250,3 +260,6 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   initializeSeasons();
 }
+
+
+
