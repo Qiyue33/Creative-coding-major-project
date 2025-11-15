@@ -1,9 +1,10 @@
-// winter
+// Winter
 class Winter extends Season {
-    constructor(x, y, width, height){
-        super(x, y, width, height);
-        this.SNOWS = [];
-    }
+  constructor(x, y, width, height){
+    super(x, y, width, height);
+    this.SNOWS = [];
+  }
+  
   draw() {
     this.drawGround();
     this.drawBase();
@@ -45,25 +46,27 @@ class Winter extends Season {
 
   drawSnow(){
     // Create new snowflakes randomly
-  if (frameCount % 5 === 0) {
-    this.SNOWS.push(new WinterSnowflake(this.groundY,
+    if (frameCount % 5 === 0) {
+      this.SNOWS.push(new WinterSnowflake(
+        this.groundY,
         this.x,
         this.y,
         this.width,
         this.height
-    ));
+        )
+      );
   }
   
-  // Update and show all the snowflakes
-  for (let i = this.SNOWS.length - 1; i >= 0; i--) {
-    this.SNOWS[i].update();
-    this.SNOWS[i].display();
+    // Update and show all the snowflakes
+    for (let i = this.SNOWS.length - 1; i >= 0; i--) {
+      this.SNOWS[i].update();
+      this.SNOWS[i].display();
     
-    // remove the disappeared snowflakes
-    if (this.SNOWS[i].isGone()) {
-      this.SNOWS.splice(i, 1);
+      // remove the disappeared snowflakes
+      if (this.SNOWS[i].isGone()) {
+        this.SNOWS.splice(i, 1);
+      }
     }
-  }
   }
 }
 
