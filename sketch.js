@@ -1,21 +1,36 @@
 let seasons = [];
+let snowflakes = [];
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
   initializeSeasons();
-  noLoop();
-}
 
+  // Create snowflake objects
+  for (let i = 0; i < 300; i++) {
+    // Add a new snowflake object to the array
+    snowflakes.push(new Snowflake());
+}}
 
 function draw() {
   background(100, 120, 140);
   drawTexture();
   drawQuadrantBorders();
+ 
 
   for (let season of seasons) {
     season.draw();
+ }
+ 
+  // Update and display each snowflake in the array
+  let currentTime = frameCount / 60;
+
+  for (let flake of snowflakes) {
+
+    flake.update(currentTime);
+    flake.display();
   }
 }
+
 
 // Initialize the four quadrants
 function initializeSeasons() {
@@ -152,65 +167,6 @@ class Summer extends Season {
 }
 
 
-// Autumn
-class Autumn extends Season {
-  
-  draw() {
-    this.drawBackground();// Autumn background
-    this.drawGround();
-    this.drawBase();
-    this.drawStem();
-    this.drawBranches();
-  }
-
-  drawBackground(){
-    noStroke();
-    fill(230,200,130)
-    rect(this.x, this.y, this.width, this.height);
-
-  }
-
-  drawGround() {
-    noStroke();
-    fill(200, 100, 50, 150); 
-    rect(this.x, this.cy + 120, this.width, this.height - 360);
-    this.drawGrass();
-  }
-
-  drawGrass(){
-    for (let i = 0; i < 50000; i++) {
-    stroke(200, 160, 30, 150);
-    let gx= this.x + random(this.width);
-    let gy= this.cy + 120 + random(this.height);
-     line(gx, gy, gx + random(-3, 3), gy - random(30, 50));
-  }
-  }
-
-  drawBase() {
-    noStroke();
-    fill(200, 80, 0); 
-    rect(this.cx - 120, this.cy + 60, 40, 40);
-    fill(255, 180, 50); 
-    rect(this.cx - 80, this.cy + 60, 80, 40);
-    fill(200, 80, 0); 
-    rect(this.cx, this.cy + 60, 40, 40);
-  }
-
-  drawStem() {
-    const stemY = [this.cy + 40, this.cy, this.cy - 40, this.cy - 80, this.cy - 120];
-    for (let y of stemY) {
-      this.doubleColorCircle(this.cx - 20, y, 40, color(255, 200, 0), color(200, 80, 0));
-    }
-  }
-  drawBranches() {
-    this.doubleColorCircle(this.cx - 80, this.cy - 40, 40, color(255, 200, 0), color(200, 80, 0));
-    this.doubleColorCircle(this.cx - 130, this.cy - 40, 40, color(200, 80, 0), color(255, 200, 0));
-    this.doubleColorCircle(this.cx + 40, this.cy - 40, 40, color(255, 200, 0), color(200, 80, 0));
-    this.doubleColorCircle(this.cx + 80, this.cy - 80, 40, color(200, 80, 0), color(255, 200, 0));
-  }
-  
-}
-
 // winter
 class Winter extends Season {
   draw() {
@@ -260,6 +216,4 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   initializeSeasons();
 }
-
-
 
