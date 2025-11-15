@@ -59,67 +59,6 @@ function drawTexture() {
   }
 }
 
-class Season {
-  constructor(x, y, width, height) {
-    this.x = x;
-    this.y = y;
-    this.width = width;
-    this.height = height;
-    this.cx = x + width / 2;
-    this.cy = y + height / 2;
-  }
-
-  draw() {}
-  doubleColorCircle(x, y, diameter, color1, color2) {
-    noStroke();
-    fill(color1);
-    arc(x, y, diameter, diameter, HALF_PI, HALF_PI * 3, PIE);
-    fill(color2);
-    arc(x, y, diameter, diameter, -HALF_PI, HALF_PI, PIE);
-  }
-}
-
-// Spring
-class Spring extends Season {
-  draw() {
-    this.drawGround();
-    this.drawBase();
-    this.drawStem();
-    this.drawBranches();
-  }
-
-  drawGround() {
-    noStroke();
-    fill(70, 180, 100, 150);
-    rect(this.x, this.cy + 120, this.width, this.height - 360);
-  }
-
-  drawBase() {
-    noStroke();
-    fill(70, 180, 100);
-    rect(this.cx - 120, this.cy + 60, 40, 40);
-    fill(220, 180, 60);
-    rect(this.cx - 80, this.cy + 60, 80, 40);
-    fill(70, 180, 100);
-    rect(this.cx, this.cy + 60, 40, 40);
-    this.doubleColorCircle(this.cx - 60, this.cy + 100, 40, color(230, 80, 70), color(70, 180, 100));
-    this.doubleColorCircle(this.cx, this.cy + 100, 40, color(70, 180, 100), color(230, 80, 70));
-  }
-
-  drawStem() {
-    const stemY = [this.cy + 40, this.cy, this.cy - 40, this.cy - 80, this.cy - 120];
-    for (let y of stemY) {
-      this.doubleColorCircle(this.cx - 20, y, 40, color(230, 80, 70), color(70, 180, 100));
-    }
-  }
-
-  drawBranches() {
-    this.doubleColorCircle(this.cx - 80, this.cy - 40, 40, color(230, 80, 70), color(70, 180, 100));
-    this.doubleColorCircle(this.cx - 130, this.cy - 40, 40, color(70, 180, 100), color(230, 80, 70));
-    this.doubleColorCircle(this.cx + 40, this.cy - 40, 40, color(230, 80, 70), color(70, 180, 100));
-    this.doubleColorCircle(this.cx + 80, this.cy - 80, 40, color(70, 180, 100), color(230, 80, 70));
-  }
-}
 
 // Summer
 class Summer extends Season {
