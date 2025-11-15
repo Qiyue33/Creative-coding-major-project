@@ -17,10 +17,10 @@ class Summer extends Season {
 
         // clouds
         this.clouds = [];
-        for (let i = 0; i < 7; i++) {
+        for (let i = 0; i < 5; i++) {
             this.clouds.push({
-                x: random(this.x, this.x + this.width),
-                y: random(this.y + 10, this.y + 100),
+                x: random(this.x + 50, this.x + this.width - 50),
+                y: random(this.y + 20, this.y + this.height / 3),
                 speed: random(0.5, 4.5),
                 size: random(40, 100)
             });
@@ -62,7 +62,7 @@ class Summer extends Season {
 
             c.x = c.x + c.speed;
             if (c.x > this.x + this.width + 50) {
-                c.x = this.x - 50;
+                c.x = this.x + 50;
             }
 
 
