@@ -1,4 +1,3 @@
-
 // Summer
 class Summer extends Season {
 
@@ -39,21 +38,36 @@ class Summer extends Season {
             });
         }
 
-
+        this.scaleProgress = 0.6;
+        this.scaleSpeed = 0.02;
+        this.rotateAngle = 0;
+        this.rotateSpeed = 0.01;
+        this.maxRotate = 0.05;
+        this.maxScale = 1;
     }
 
     // draw summer
     draw() {
-        this.drawBackground();// Summer background
+        this.drawBackground();
         this.drawClouds();
         this.drawSun();
         this.drawGround();
         this.drawGrass();
         this.drawGroundApples();
+
+        // Update the zoom progress (0.6-1)
+        if (this.scaleProgress < 1) {
+            this.scaleProgress += this.scaleSpeed;
+        } else {
+            this.scaleProgress = 0.6;
+        }
+
+        // Update the rotation Angle
+        this.rotateAngle = sin(frameCount * this.rotateSpeed) * this.maxRotate;
+
         this.drawBase();
         this.drawStem();
         this.drawBranches();
-
     }
 
     // draw clouds
@@ -181,21 +195,39 @@ class Summer extends Season {
 
     }
 
-    // Draw stem
     drawStem() {
         const stemY = [this.cy + 40, this.cy, this.cy - 40, this.cy - 80, this.cy - 120];
+
+        push();
+
+        translate(this.cx, this.cy + 60);
+        rotate(this.rotateAngle);
+        scale(this.scaleProgress);
+        translate(-this.cx, -(this.cy + 60));
+
         for (let y of stemY) {
+
             this.doubleColorCircle(this.cx - 20, y, 40, color(90, 180, 175), color(255, 180, 100));
+
         }
+
+        pop();
     }
+
 
     // Draw branches
 
     drawBranches() {
 
-        // Draw yellow-brown connected branches 
+        push();
 
-        stroke(205, 133, 63); 
+        translate(this.cx, this.cy + 60);
+        rotate(this.rotateAngle);
+        scale(this.scaleProgress);
+        translate(-this.cx, -(this.cy + 60));
+
+        // Draw yellow-brown connected branches 
+        stroke(205, 133, 63);
         strokeWeight(3);
 
         //  The brown branch on the left
@@ -209,7 +241,7 @@ class Summer extends Season {
         line(this.cx - 50, this.cy - 150, this.cx - 50, this.cy - 180);
 
         // A brown branch connected to the trunk on the left
-        line(this.cx - 40, this.cy - 6, this.cx - 80, this.cy - 40); 
+        line(this.cx - 40, this.cy - 6, this.cx - 80, this.cy - 40);
 
         // The brown branch on the right
         line(this.cx + 40, this.cy - 40, this.cx + 90, this.cy - 80);
@@ -218,8 +250,8 @@ class Summer extends Season {
         line(this.cx + 110, this.cy - 150, this.cx + 110, this.cy - 180);
         line(this.cx + 40, this.cy - 40, this.cx + 40, this.cy - 80);
 
-         // A brown branch connected to the trunk on the right
-        line(this.cx + 0, this.cy - 5, this.cx + 40, this.cy - 40); 
+        // A brown branch connected to the trunk on the right
+        line(this.cx + 0, this.cy - 5, this.cx + 40, this.cy - 40);
 
         noStroke();
 
@@ -244,6 +276,8 @@ class Summer extends Season {
         this.doubleColorCircle(this.cx + 110, this.cy - 150, 28, color(255, 180, 100), color(90, 180, 175));
         this.doubleColorCircle(this.cx + 110, this.cy - 180, 22, color(90, 180, 175), color(255, 180, 100));
         this.doubleColorCircle(this.cx + 40, this.cy - 80, 22, color(255, 180, 100), color(90, 180, 175));
+
+        pop();
     }
 
 }

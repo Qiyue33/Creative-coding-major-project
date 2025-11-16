@@ -2,7 +2,6 @@
 class Spring extends Season {
 
   constructor(x, y, width, height) {
-
     super(x, y, width, height);
 
     // Initialize the exclusive animation elements for spring
@@ -10,18 +9,33 @@ class Spring extends Season {
 
     // Petals cycle
     for (let i = 0; i < 15; i++) {
-
       let newPetal = new Petal(this.x, this.y, this.width, this.height);
-
       this.petals.push(newPetal);
     }
-  }
 
+    this.scaleProgress = 0.1;
+    this.scaleSpeed = 0.02;
+    this.rotateAngle = 0;
+    this.rotateSpeed = 0.01;
+    this.maxRotate = 0.05;
+    this.maxScale = 0.6;
+  }
 
   // draw spring
   draw() {
     this.drawBackground();
     this.drawGround();
+
+    // Update the zoom progress (0.1-0.6)
+    if (this.scaleProgress < 0.6) {
+      this.scaleProgress += this.scaleSpeed;
+    } else {
+      this.scaleProgress = 0.1;
+    }
+
+    // Update the rotation Angle
+    this.rotateAngle = sin(frameCount * this.rotateSpeed) * this.maxRotate;
+
     this.drawBase();
     this.drawStem();
     this.drawBranches();
@@ -68,10 +82,10 @@ class Spring extends Season {
   // Draw grass
   drawGrass() {
     for (let i = 0; i < 15000; i++) {
+
       stroke(100, 200, 80, 170);
       let grassX = this.x + random(this.width);
       let grassY = this.cy + 120 + random(30);
-
 
       curve(grassX, grassY, grassX + random(-2, 2), grassY - random(15, 25), grassX + random(-1, 1), grassY - random(5, 10), grassX, grassY);
     }
@@ -102,6 +116,7 @@ class Spring extends Season {
 
   // Draw the bottom of the trees
   drawBase() {
+
     noStroke();
     fill(165, 120, 70);
     rect(this.cx - 120, this.cy + 60, 40, 40);
@@ -114,20 +129,40 @@ class Spring extends Season {
 
   // Draw the stems and leaves of trees
   drawStem() {
+
     const stemY = [this.cy + 40, this.cy, this.cy - 40, this.cy - 80, this.cy - 120];
+
+    push();
+
+    translate(this.cx, this.cy + 60);
+    rotate(this.rotateAngle);
+    scale(this.scaleProgress);
+    translate(-this.cx, -(this.cy + 60));
+
     for (let y of stemY) {
+
       this.doubleColorCircle(this.cx - 20, y, 40, color(255, 107, 107), color(100, 200, 120));
+
     }
+
+    pop();
   }
 
 
   // Draw branches
   drawBranches() {
 
+    push();
+
+    translate(this.cx, this.cy + 60);
+    rotate(this.rotateAngle);
+    scale(this.scaleProgress);
+    translate(-this.cx, -(this.cy + 60));
+
     // Draw brown connected branches
-    stroke(139, 69, 19); 
+    stroke(139, 69, 19);
     strokeWeight(3);
-    
+
     // The brown branch on the left
     line(this.cx - 130, this.cy - 40, this.cx - 160, this.cy - 80);
     line(this.cx - 160, this.cy - 80, this.cx - 180, this.cy - 120);
@@ -140,8 +175,7 @@ class Spring extends Season {
 
     // A brown branch connected to the trunk on the left
     line(this.cx - 40, this.cy - 6, this.cx - 80, this.cy - 40);
-   
-    
+
     // The brown branch on the right
     line(this.cx + 40, this.cy - 40, this.cx + 90, this.cy - 80);
     line(this.cx + 90, this.cy - 80, this.cx + 80, this.cy - 120);
@@ -153,7 +187,7 @@ class Spring extends Season {
     line(this.cx + 0, this.cy - 5, this.cx + 40, this.cy - 40);
 
     noStroke();
-    
+
     // Left branch
     this.doubleColorCircle(this.cx - 130, this.cy - 40, 40, color(100, 200, 120), color(255, 107, 107));
     this.doubleColorCircle(this.cx - 160, this.cy - 80, 30, color(255, 107, 107), color(100, 200, 120));
@@ -176,6 +210,7 @@ class Spring extends Season {
     this.doubleColorCircle(this.cx + 40, this.cy - 80, 22, color(100, 200, 120), color(255, 107, 107));
 
     this.drawNewLeaves();
+    pop();
   }
 
 
@@ -194,15 +229,19 @@ class Spring extends Season {
 
   //  Update Animations
   updateAnimations() {
+
     this.petals.forEach(petal => {
+
       petal.update();
       petal.display();
+
     });
   }
 }
 
 // Draw falling petals
 class Petal {
+
   constructor(quadrantX, quadrantY, quadrantWidth, quadrantHeight) {
 
     this.quadrantX = quadrantX;
@@ -219,17 +258,19 @@ class Petal {
   }
 
   update() {
-    this.posY += this.speed;
 
+    this.posY += this.speed;
     this.posX += sin(frameCount / 30 + this.posY * 0.1);
 
     if (this.posY > this.quadrantY + this.quadrantHeight) {
+      
       this.posX = this.quadrantX + random(this.quadrantWidth);
       this.posY = this.quadrantY + random(-30, 20);
     }
   }
 
   display() {
+    
     noStroke();
     fill(this.color);
     ellipse(this.posX, this.posY, this.size * 1.2, this.size);

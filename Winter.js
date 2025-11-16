@@ -1,12 +1,33 @@
 // Winter
 class Winter extends Season {
+
   constructor(x, y, width, height) {
+
     super(x, y, width, height);
+
     this.SNOWS = [];
+
+    this.scaleProgress = 0.6;
+    this.scaleSpeed = 0.02;
+    this.rotateAngle = 0;
+    this.rotateSpeed = 0.01;
+    this.maxRotate = 0.03;
+    this.minScale = 0.1;
   }
 
   draw() {
     this.drawGround();
+
+    // Update the zoom progress (0.6-0.1)
+    if (this.scaleProgress > 0.1) {
+      this.scaleProgress -= this.scaleSpeed;
+    } else {
+      this.scaleProgress = 0.6;
+    }
+
+    // Update the rotation Angle
+    this.rotateAngle = sin(frameCount * this.rotateSpeed) * this.maxRotate;
+
     this.drawBase();
     this.drawStem();
     this.drawBranches();
@@ -31,16 +52,35 @@ class Winter extends Season {
   }
 
   drawStem() {
+
     const stemY = [this.cy + 40, this.cy, this.cy - 40, this.cy - 80, this.cy - 120];
+
+    push();
+
+    translate(this.cx, this.cy + 60);
+    rotate(this.rotateAngle);
+    scale(this.scaleProgress);
+    translate(-this.cx, -(this.cy + 60));
+
     for (let y of stemY) {
+
       this.doubleColorCircle(this.cx - 20, y, 40, color(255, 255, 255), color(50, 100, 150));
+
     }
+
+    pop();
   }
 
   drawBranches() {
 
-    // Draw white-brown connected branches
+    push();
 
+    translate(this.cx, this.cy + 60);
+    rotate(this.rotateAngle);
+    scale(this.scaleProgress);
+    translate(-this.cx, -(this.cy + 60));
+
+    // Draw brown connected branches (Winter: cool brown)
     stroke(240, 240, 240);
     strokeWeight(3);
 
@@ -90,6 +130,7 @@ class Winter extends Season {
     this.doubleColorCircle(this.cx + 110, this.cy - 180, 22, color(255, 255, 255), color(50, 100, 150));
     this.doubleColorCircle(this.cx + 40, this.cy - 80, 22, color(50, 100, 150), color(255, 255, 255));
 
+    pop();
   }
 
   drawSnow() {
