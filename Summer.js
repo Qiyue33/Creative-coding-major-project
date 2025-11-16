@@ -17,10 +17,10 @@ class Summer extends Season {
 
         // clouds
         this.clouds = [];
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 7; i++) {
             this.clouds.push({
-                x: random(this.x + 50, this.x + this.width - 50),
-                y: random(this.y + 20, this.y + this.height / 3),
+                x: random(this.x, this.x + this.width),
+                y: random(this.y + 10, this.y + 100),
                 speed: random(0.5, 4.5),
                 size: random(40, 100)
             });
@@ -62,7 +62,7 @@ class Summer extends Season {
 
             c.x = c.x + c.speed;
             if (c.x > this.x + this.width + 50) {
-                c.x = this.x + 50;
+                c.x = this.x - 50;
             }
 
 
@@ -190,13 +190,29 @@ class Summer extends Season {
     }
 
     // Draw branches
+
     drawBranches() {
-        this.doubleColorCircle(this.cx - 80, this.cy - 40, 40, color(90, 180, 175), color(255, 140, 100));
-        this.doubleColorCircle(this.cx - 130, this.cy - 40, 40, color(255, 140, 100), color(90, 180, 175));
-        this.doubleColorCircle(this.cx + 40, this.cy - 40, 40, color(90, 180, 175), color(255, 140, 100));
-        this.doubleColorCircle(this.cx + 90, this.cy - 80, 40, color(255, 140, 100), color(90, 180, 175));
+        // Left branch
+        this.doubleColorCircle(this.cx - 140, this.cy - 30, 40, color(90, 180, 175), color(255, 180, 100));
+        this.doubleColorCircle(this.cx - 170, this.cy - 70, 30, color(255, 180, 100), color(90, 180, 175));
+        this.doubleColorCircle(this.cx - 190, this.cy - 110, 25, color(90, 180, 175), color(255, 180, 100));
+        this.doubleColorCircle(this.cx - 200, this.cy - 140, 20, color(255, 180, 100), color(90, 180, 175));
+        this.doubleColorCircle(this.cx - 140, this.cy - 70, 22, color(255, 180, 100), color(90, 180, 175));
+
+        // Middle branch
+        this.doubleColorCircle(this.cx - 80, this.cy - 30, 40, color(255, 180, 100), color(90, 180, 175));
+        this.doubleColorCircle(this.cx - 80, this.cy - 80, 28, color(255, 180, 100), color(90, 180, 175));
+        this.doubleColorCircle(this.cx - 50, this.cy - 140, 25, color(255, 180, 100), color(90, 180, 175));
+        this.doubleColorCircle(this.cx - 50, this.cy - 170, 20, color(90, 180, 175), color(255, 180, 100));
+
+        // Right branch
+        this.doubleColorCircle(this.cx + 50, this.cy - 30, 40, color(90, 180, 175), color(255, 180, 100));
+        this.doubleColorCircle(this.cx + 100, this.cy - 70, 40, color(255, 180, 100), color(90, 180, 175));
+        this.doubleColorCircle(this.cx + 90, this.cy - 110, 32, color(90, 180, 175), color(255, 180, 100));
+        this.doubleColorCircle(this.cx + 120, this.cy - 140, 28, color(255, 180, 100), color(90, 180, 175));
+        this.doubleColorCircle(this.cx + 120, this.cy - 170, 22, color(90, 180, 175), color(255, 180, 100));
+        this.doubleColorCircle(this.cx + 50, this.cy - 70, 22, color(255, 180, 100), color(90, 180, 175));
+
     }
-
-
-
 }
+

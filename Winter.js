@@ -38,10 +38,28 @@ class Winter extends Season {
   }
 
   drawBranches() {
-    this.doubleColorCircle(this.cx - 80, this.cy - 40, 40, color(255, 255, 255), color(50, 100, 150));
-    this.doubleColorCircle(this.cx - 130, this.cy - 40, 40, color(50, 100, 150), color(255, 255, 255));
-    this.doubleColorCircle(this.cx + 40, this.cy - 40, 40, color(255, 255, 255), color(50, 100, 150));
-    this.doubleColorCircle(this.cx + 90, this.cy - 80, 40, color(50, 100, 150), color(255, 255, 255));
+
+  // Left branch
+  this.doubleColorCircle(this.cx - 130, this.cy - 40, 40, color(50, 100, 150), color(255, 255, 255));
+  this.doubleColorCircle(this.cx - 160, this.cy - 80, 30, color(255, 255, 255), color(50, 100, 150));
+  this.doubleColorCircle(this.cx - 180, this.cy - 120, 25, color(50, 100, 150), color(255, 255, 255));
+  this.doubleColorCircle(this.cx - 180, this.cy - 150, 20, color(255, 255, 255), color(50, 100, 150));
+  this.doubleColorCircle(this.cx - 130, this.cy - 80, 22, color(255, 255, 255), color(50, 100, 150));
+
+  // Middle branch
+  this.doubleColorCircle(this.cx - 80, this.cy - 40, 40, color(255, 255, 255), color(50, 100, 150));
+  this.doubleColorCircle(this.cx - 80, this.cy - 80, 28, color(255, 255, 255), color(50, 100, 150));
+  this.doubleColorCircle(this.cx - 50, this.cy - 150, 25, color(50, 100, 150), color(255, 255, 255));
+  this.doubleColorCircle(this.cx - 50, this.cy - 180, 20, color(255, 255, 255), color(50, 100, 150));
+
+  // Right branch
+  this.doubleColorCircle(this.cx + 40, this.cy - 40, 40, color(255, 255, 255), color(50, 100, 150));
+  this.doubleColorCircle(this.cx + 90, this.cy - 80, 40, color(50, 100, 150), color(255, 255, 255));
+  this.doubleColorCircle(this.cx + 80, this.cy - 120, 32, color(255, 255, 255), color(50, 100, 150));
+  this.doubleColorCircle(this.cx + 110, this.cy - 150, 28, color(50, 100, 150), color(255, 255, 255));
+  this.doubleColorCircle(this.cx + 110, this.cy - 180, 22, color(255, 255, 255), color(50, 100, 150));
+  this.doubleColorCircle(this.cx + 40, this.cy - 80, 22, color(50, 100, 150), color(255, 255, 255));
+
   }
 
   drawSnow(){

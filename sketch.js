@@ -62,12 +62,6 @@ function drawTexture() {
 }
 
 
-
-
-
-
-
-
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   initializeSeasons();
