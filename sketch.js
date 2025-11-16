@@ -34,7 +34,7 @@ function setup() {
   button3.mousePressed(playPause3);
   button4.mousePressed(playPause4);
 
-  // Create snowflake objects
+     // Create snowflake objects
   for (let i = 0; i < 300; i++) {
     // Add a new snowflake object to the array
     snowflakes.push(new Snowflake());
@@ -58,7 +58,6 @@ function draw() {
   let currentTime = frameCount / 60;
 
   for (let flake of snowflakes) {
-
     flake.update(currentTime);
     flake.display();
   }
@@ -95,7 +94,7 @@ function drawTexture() {
 
 
 
-
+//Add music
 function preload() {
   song1 = loadSound('assets/Spring.mp3');
   song2 = loadSound('assets/Summer.mp3');
@@ -103,7 +102,7 @@ function preload() {
   song4 = loadSound('assets/Winter.mp3');
 }
 
-
+//Draw Spring Cricle
 function drawSpringCricle() {
   
   let rms = analyser1.getLevel();
@@ -117,6 +116,7 @@ function drawSpringCricle() {
   ellipse(width * 0.35 , height * 0.1, 30 + rms * 100, 30 + rms * 100);
 }
 
+//Draw SummerSun
 function drawSummerSun() {
   
   let rms = analyser2.getLevel();
@@ -126,7 +126,7 @@ function drawSummerSun() {
 
 }
 
-
+//Draw Mountain
 function drawAutumnMoutain() {
   
   let rms = analyser3.getLevel();
@@ -144,7 +144,7 @@ function drawAutumnMoutain() {
 
 }
 
-
+//Draw winterCricle
 function drawWinterCricle() {
   
   let rms = analyser4.getLevel();
@@ -219,7 +219,5 @@ function windowResized() {
   button2.position(width * 0.725 , height * 0.45);
   button3.position(width * 0.21 , height * 0.95);
   button4.position(width * 0.725 , height * 0.95);
-
-
 }
 
