@@ -30,7 +30,7 @@ class Autumn extends Season {
     for (let i = 0; i < 50000; i++) {
       stroke(200, 160, 30, 150);
       let gx = this.x + random(this.width);
-      let gy = this.cy + 120 + random(this.height);
+      let gy = this.cy + 90 + random(this.height);
       line(gx, gy, gx + random(-3, 3), gy - random(30, 50));
     }
   }

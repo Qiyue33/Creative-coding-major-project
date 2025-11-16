@@ -77,7 +77,7 @@ class Summer extends Season {
     // draw sun
     drawSun() {
         noStroke();
-        fill(255, 204, 0);
+        fill(0,0,0,5);
         ellipse(this.sunX, this.sunY, this.size);
 
         const sunRadius = this.size / 2;
@@ -87,7 +87,7 @@ class Summer extends Season {
 
         this.angle += this.rotateSpeed; // The light beam rotates, with the angle increasing.
 
-        this.rayLength = this.size * 0.7;
+        this.rayLength = this.size * 0.6;
 
         // Draw all rays in a loop
         for (let i = 0; i < this.raysCount; i++) {

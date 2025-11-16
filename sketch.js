@@ -25,9 +25,9 @@ function setup() {
   button4 = createButton("Winter");
   
   button1.position(width * 0.21 , height * 0.45);
-  button2.position(width * 0.71 , height * 0.45);
+  button2.position(width * 0.725 , height * 0.45);
   button3.position(width * 0.21 , height * 0.95);
-  button4.position(width * 0.71 , height * 0.95);
+  button4.position(width * 0.725, height * 0.95);
   
   button1.mousePressed(playPause1);
   button2.mousePressed(playPause2);
@@ -46,11 +46,13 @@ function draw() {
   drawTexture();
   drawQuadrantBorders();
   drawSpringCricle();
-  
+  drawWinterCricle();
   for (let season of seasons) {
     season.draw();
  }
-  drawWinterCricle();
+  drawAutumnMoutain();
+  drawSummerSun();
+  
   
   // Update and display each snowflake in the array
   let currentTime = frameCount / 60;
@@ -115,15 +117,43 @@ function drawSpringCricle() {
   ellipse(width * 0.35 , height * 0.1, 30 + rms * 100, 30 + rms * 100);
 }
 
+function drawSummerSun() {
+  
+  let rms = analyser2.getLevel();
+   noStroke();
+   fill(255, 204, 0);
+   ellipse(width * 0.973 , height * 0.05, 100 + rms * 100, 100 + rms * 100);
+
+}
+
+
+function drawAutumnMoutain() {
+  
+  let rms = analyser3.getLevel();
+  fill(240,200,90);
+  let x1 = width * 0.05;  
+  let y1 = height * 0.72;
+
+  let x2 = width * 0.4;  
+  let y2 = height * 0.72;
+  let size = 80 + rms * 200; 
+  noStroke();
+  
+  triangle(x1, y1 - size,x1 - size, y1 + size,x1+30+size, y1 + size  );
+  triangle(x2+60, y2- size,x2 - size+20, y2 + size,x2+size, y2 + size);
+
+}
+
+
 function drawWinterCricle() {
   
   let rms = analyser4.getLevel();
   fill(0);
 
-  for (let i = 0; i < 100; i++) {
+  for (let i = 0; i < 25; i++) {
   // Cricle of water
   fill(255, 100 - i*20); 
-  ellipse(width*0.735, height*0.63, 5 + rms*300 + i*20);
+  ellipse(width*0.735, height*0.75, 5 + rms*300 + i*20);
 }
 }
 
@@ -184,10 +214,12 @@ function playPause4() {
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   initializeSeasons();
-
+  drawSummerSun();
   button1.position(width * 0.21 , height * 0.45);
-  button2.position(width * 0.71 , height * 0.45);
+  button2.position(width * 0.725 , height * 0.45);
   button3.position(width * 0.21 , height * 0.95);
-  button4.position(width * 0.71 , height * 0.95);
+  button4.position(width * 0.725 , height * 0.95);
+
+
 }
 
