@@ -4,6 +4,7 @@ class Autumn extends Season {
   constructor(x, y, width, height) {
     super(x, y, width, height);
 
+    // Define global variables to prepare for the tree's growth animation.
     this.scaleProgress = 1;
     this.scaleSpeed = 0.02;
     this.rotateAngle = 0;
@@ -15,6 +16,12 @@ class Autumn extends Season {
   draw() {
     this.drawBackground();
     this.drawGround();
+
+    const noiseIndex = Math.floor(frameCount % valueArrayLength);
+    const noiseVal = perlinNoiseArray[noiseIndex];
+
+    // Use noise to control the shrinkage rate of trees
+    this.scaleSpeed = map(noiseVal, 0, 1, 0.01, 0.04);
 
     // Update the zoom progress (1-0.6)
     if (this.scaleProgress > 0.6) {
@@ -48,11 +55,20 @@ class Autumn extends Season {
   }
 
   drawGrass() {
+    
+    const noiseIndex = Math.floor(frameCount % valueArrayLength);
+    const noiseVal = perlinNoiseArray[noiseIndex];
+
+    // Use noise to control the maximum height of the grass
+    const grassMaxHeight = map(noiseVal, 0, 1, 10, 40);
+
     for (let i = 0; i < 50000; i++) {
       stroke(200, 160, 30, 150);
       let gx = this.x + random(this.width);
-      let gy = this.cy + 120 + random(this.height);
-      line(gx, gy, gx + random(-3, 3), gy - random(30, 50));
+      let gy = this.cy + 120 + random(this.height - 360);
+
+      // The height of the grass controlled by noise
+      line(gx, gy, gx + random(-3, 3), gy - random(5, grassMaxHeight));
     }
   }
 
@@ -88,13 +104,13 @@ class Autumn extends Season {
 
   drawBranches() {
 
-    push(); 
+    push();
 
-    translate(this.cx, this.cy + 60); 
-    rotate(this.rotateAngle); 
-    scale(this.scaleProgress); 
+    translate(this.cx, this.cy + 60);
+    rotate(this.rotateAngle);
+    scale(this.scaleProgress);
     translate(-this.cx, -(this.cy + 60));
-   
+
     // Draw red-brown connected branches 
     stroke(150, 75, 40);
     strokeWeight(3);
@@ -145,11 +161,11 @@ class Autumn extends Season {
     this.doubleColorCircle(this.cx + 110, this.cy - 180, 22, color(255, 200, 0), color(200, 80, 0));
     this.doubleColorCircle(this.cx + 40, this.cy - 80, 22, color(200, 80, 0), color(255, 200, 0));
 
-     pop();
+    pop();
   }
 }
 
-class Snowflake {
+class Snowflake {  // Reference code source: https://p5js.org/examples/classes-and-objects-snowflakes/
   constructor() {
 
     this.posX = random(0, width / 2);

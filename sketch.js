@@ -1,6 +1,10 @@
 let seasons = [];
 let snowflakes = [];
 
+let perlinNoiseArray = [];
+let valueArrayLength = 50;
+let perlinNoiseStep = 0.1;
+
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -11,7 +15,13 @@ function setup() {
     // Add a new snowflake object to the array
     snowflakes.push(new Snowflake());
   }
+
+  for (let i = 0; i < valueArrayLength; i += perlinNoiseStep) {
+    
+    perlinNoiseArray.push(noise(i));
+  }
 }
+
 
 function draw() {
   background(100, 120, 140);

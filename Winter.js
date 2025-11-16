@@ -7,6 +7,7 @@ class Winter extends Season {
 
     this.SNOWS = [];
 
+    // Define global variables to prepare for the tree's growth animation.
     this.scaleProgress = 0.6;
     this.scaleSpeed = 0.02;
     this.rotateAngle = 0;
@@ -17,6 +18,12 @@ class Winter extends Season {
 
   draw() {
     this.drawGround();
+
+    const noiseIndex = Math.floor(frameCount % valueArrayLength);
+    const noiseVal = perlinNoiseArray[noiseIndex];
+
+    // Use noise to control the shrinkage rate of trees
+    this.scaleSpeed = map(noiseVal, 0, 1, 0.008, 0.03);
 
     // Update the zoom progress (0.6-0.1)
     if (this.scaleProgress > 0.1) {

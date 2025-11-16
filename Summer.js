@@ -55,6 +55,11 @@ class Summer extends Season {
         this.drawGrass();
         this.drawGroundApples();
 
+        const noiseIndex = Math.floor(frameCount % valueArrayLength);
+        const noiseVal = perlinNoiseArray[noiseIndex];
+        this.scaleSpeed = map(noiseVal, 0, 1, 0.015, 0.05);
+
+
         // Update the zoom progress (0.6-1)
         if (this.scaleProgress < 1) {
             this.scaleProgress += this.scaleSpeed;
@@ -146,8 +151,11 @@ class Summer extends Season {
 
     // Draw the grass in the Summer quadrant
     drawGrass() {
-        for (let i = 0; i < 15000; i++) {
+        const noiseIndex = Math.floor(frameCount % valueArrayLength);
+        const noiseVal = perlinNoiseArray[noiseIndex];
+        const grassMaxHeight = map(noiseVal, 0, 1, 15, 30); 
 
+        for (let i = 0; i < 50000; i++) {
             let r = random(20, 100);
             let g = random(120, 170);
             let b = random(60, 90);
@@ -156,7 +164,13 @@ class Summer extends Season {
             let grassX = random(this.x, this.x + this.width);
             let grassY = random(this.cy + 50, this.y + this.height);
 
-            curve(grassX, grassY, grassX + random(-2, 2), grassY - random(15, 25), grassX + random(-1, 1), grassY - random(5, 10), grassX, grassY);
+            // The height of the grass controlled by noise
+            curve(
+                grassX, grassY,
+                grassX + random(-2, 2), grassY - random(5, grassMaxHeight),
+                grassX + random(-1, 1), grassY - random(3, grassMaxHeight * 0.7),
+                grassX, grassY
+            );
         }
     }
 

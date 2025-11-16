@@ -1,3 +1,4 @@
+
 // Spring
 class Spring extends Season {
 
@@ -25,6 +26,12 @@ class Spring extends Season {
   draw() {
     this.drawBackground();
     this.drawGround();
+
+    const noiseIndex = Math.floor(frameCount % valueArrayLength);
+    const noiseVal = perlinNoiseArray[noiseIndex];
+
+    // Noise values are mapped to the growth rate
+    this.scaleSpeed = map(noiseVal, 0, 1, 0.005, 0.03);
 
     // Update the zoom progress (0.1-0.6)
     if (this.scaleProgress < 0.6) {
@@ -81,35 +88,48 @@ class Spring extends Season {
 
   // Draw grass
   drawGrass() {
-    for (let i = 0; i < 15000; i++) {
 
+    const noiseIndex = Math.floor(frameCount % perlinNoiseArray.length);
+    const noiseVal = perlinNoiseArray[noiseIndex];
+    const grassMaxHeight = map(noiseVal, 0, 1, 15, 35);
+
+    for (let i = 0; i < 15000; i++) {
       stroke(100, 200, 80, 170);
       let grassX = this.x + random(this.width);
       let grassY = this.cy + 120 + random(30);
 
-      curve(grassX, grassY, grassX + random(-2, 2), grassY - random(15, 25), grassX + random(-1, 1), grassY - random(5, 10), grassX, grassY);
+      // The height of the grass is controlled by the grassMaxHeight controlled by noise
+      curve(
+        grassX, grassY,
+        grassX + random(-2, 2), grassY - random(5, grassMaxHeight),
+        grassX + random(-1, 1), grassY - random(3, grassMaxHeight * 0.7),
+        grassX, grassY
+      );
     }
   }
 
 
   // Draw small ground flowers
   drawFlowers() {
-    for (let i = 0; i < 36; i++) {
+    
+    const noiseIndex = Math.floor(frameCount % valueArrayLength);
+    const noiseVal = perlinNoiseArray[noiseIndex];
+    const flowerSize = map(noiseVal, 0, 1, 4, 8);
+    const stemLength = map(noiseVal, 0, 1, 4, 8);
 
+    for (let i = 0; i < 36; i++) {
       let flyX = this.x + random(this.width);
       let flyY = this.cy + 120 + random(25);
 
-      // Small flower stems and leaves
       stroke(80, 180, 60);
-      line(flyX, flyY, flyX, flyY - 6);
+      line(flyX, flyY, flyX, flyY - stemLength);
 
-      // Flower petals
       noStroke();
       fill(random(230, 255), random(150, 200), random(180, 255), 190);
-      ellipse(flyX, flyY - 8, 6, 9);
+      ellipse(flyX, flyY - stemLength - 2, flowerSize, flowerSize * 1.2);
       fill(random(240, 255), random(200, 255), random(190, 255), 190);
-      ellipse(flyX - 3, flyY - 6, 6, 9);
-      ellipse(flyX + 3, flyY - 6, 6, 9);
+      ellipse(flyX - flowerSize * 0.5, flyY - stemLength, flowerSize, flowerSize * 1.2);
+      ellipse(flyX + flowerSize * 0.5, flyY - stemLength, flowerSize, flowerSize * 1.2);
     }
   }
 
@@ -263,14 +283,14 @@ class Petal {
     this.posX += sin(frameCount / 30 + this.posY * 0.1);
 
     if (this.posY > this.quadrantY + this.quadrantHeight) {
-      
+
       this.posX = this.quadrantX + random(this.quadrantWidth);
       this.posY = this.quadrantY + random(-30, 20);
     }
   }
 
   display() {
-    
+
     noStroke();
     fill(this.color);
     ellipse(this.posX, this.posY, this.size * 1.2, this.size);
