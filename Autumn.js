@@ -106,7 +106,8 @@ class Autumn extends Season {
 
   }
 }
-
+  //Inspired by p5.js Contributors (2024), Snowflakes example.
+  //Source:https://p5js.org/examples/classes-and-objects-snowflakes/
 class Snowflake {
   constructor() {
 
@@ -129,7 +130,6 @@ class Snowflake {
     // leave speed
     this.posY += this.speed;
     this.posX += sin(frameCount / 20 + this.posY) * 0.3;
-
 
     if (this.posY > height) {
       this.posY = height / 2;
