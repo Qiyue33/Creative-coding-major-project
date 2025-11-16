@@ -38,6 +38,7 @@ class Summer extends Season {
             });
         }
 
+         // Define global variables to prepare for the tree's growth animation.
         this.scaleProgress = 0.6;
         this.scaleSpeed = 0.02;
         this.rotateAngle = 0;

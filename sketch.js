@@ -9,13 +9,7 @@ let perlinNoiseStep = 0.1;
 function setup() {
   createCanvas(windowWidth, windowHeight);
   initializeSeasons();
-
-  // Create snowflake objects
-  for (let i = 0; i < 300; i++) {
-    // Add a new snowflake object to the array
-    snowflakes.push(new Snowflake());
-  }
-
+  
   for (let i = 0; i < valueArrayLength; i += perlinNoiseStep) {
     
     perlinNoiseArray.push(noise(i));

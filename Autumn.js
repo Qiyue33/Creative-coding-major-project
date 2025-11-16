@@ -8,9 +8,19 @@ class Autumn extends Season {
     this.scaleProgress = 1;
     this.scaleSpeed = 0.02;
     this.rotateAngle = 0;
-    this.RotateSpeed = 0.01;
+    this.rotateSpeed = 0.01;
     this.maxRotate = 0.05;
     this.minScale = 0.6;
+
+    this.leaves = [];
+    this.initialLeaves();
+  }
+
+  initialLeaves(){
+
+    for(let i = 0; i < 300; i++){
+      this.leaves.push(new fallenLeaves(this.x, this.y, this.width, this.height));
+    }
   }
 
   draw() {
@@ -36,6 +46,18 @@ class Autumn extends Season {
     this.drawBase();
     this.drawStem();
     this.drawBranches();
+    this.updateAndDrawLeaves();
+  }
+ 
+  /*
+  This method is that when I tried to change the position of the autumn leaves 
+  in the group code, the screen was blank. I asked chatGPT (what happened?) and added it under its reminder.
+  */
+  updateAndDrawLeaves(){
+    for(let leaf of this.leaves){
+      leaf.update();
+      leaf.display();
+    }
   }
 
   drawBackground() {
@@ -165,11 +187,16 @@ class Autumn extends Season {
   }
 }
 
-class Snowflake {  // Reference code source: https://p5js.org/examples/classes-and-objects-snowflakes/
-  constructor() {
+class fallenLeaves {  // Reference code source: https://p5js.org/examples/classes-and-objects-snowflakes/
+  constructor(seasonX, seasonY, seasonWidth, seasonHeight) {
 
-    this.posX = random(0, width / 2);
-    this.posY = random(height / 2, height);
+    this.seasonX = seasonX; 
+    this.seasonY = seasonY; 
+    this.seasonWidth = seasonWidth;
+    this.seasonHeight = seasonHeight;
+
+    this.posX = seasonX + random(seasonWidth);
+    this.posY = seasonY + random(seasonHeight * 0.01, seasonHeight * 0.99);
 
     this.size = random(3, 6);
     this.speed = 0.5 + random(1.5);
@@ -189,9 +216,10 @@ class Snowflake {  // Reference code source: https://p5js.org/examples/classes-a
     this.posX += sin(frameCount / 20 + this.posY) * 0.3;
 
 
-    if (this.posY > height) {
-      this.posY = height / 2;
-      this.posX = random(0, width / 2);
+    if (this.posY > this.seasonY + this.seasonHeight) {
+
+      this.posX = this.seasonX + random(this.seasonWidth);
+      this.posY = this.seasonY + random(-this.seasonHeight * 0.01, this.seasonHeight * 0.99);
     }
   }
 
