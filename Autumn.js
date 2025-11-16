@@ -54,6 +54,35 @@ class Autumn extends Season {
 
   drawBranches() {
 
+    // Draw red-brown connected branches 
+    stroke(150, 75, 40);
+    strokeWeight(3);
+
+    // The brown branch on the left
+    line(this.cx - 130, this.cy - 40, this.cx - 160, this.cy - 80);
+    line(this.cx - 160, this.cy - 80, this.cx - 180, this.cy - 120);
+    line(this.cx - 180, this.cy - 120, this.cx - 180, this.cy - 150);
+    line(this.cx - 130, this.cy - 40, this.cx - 130, this.cy - 80);
+    line(this.cx - 130, this.cy - 40, this.cx - 80, this.cy - 40);
+    line(this.cx - 80, this.cy - 40, this.cx - 80, this.cy - 80);
+    line(this.cx - 80, this.cy - 80, this.cx - 50, this.cy - 150);
+    line(this.cx - 50, this.cy - 150, this.cx - 50, this.cy - 180);
+
+    // A brown branch connected to the trunk on the left
+    line(this.cx - 40, this.cy - 6, this.cx - 80, this.cy - 40);
+
+    // The brown branch on the right
+    line(this.cx + 40, this.cy - 40, this.cx + 90, this.cy - 80);
+    line(this.cx + 90, this.cy - 80, this.cx + 80, this.cy - 120);
+    line(this.cx + 80, this.cy - 120, this.cx + 110, this.cy - 150);
+    line(this.cx + 110, this.cy - 150, this.cx + 110, this.cy - 180);
+    line(this.cx + 40, this.cy - 40, this.cx + 40, this.cy - 80);
+
+    // A brown branch connected to the trunk on the right
+    line(this.cx + 0, this.cy - 5, this.cx + 40, this.cy - 40);
+
+    noStroke();
+
     // Left branch
     this.doubleColorCircle(this.cx - 130, this.cy - 40, 40, color(200, 80, 0), color(255, 200, 0));
     this.doubleColorCircle(this.cx - 160, this.cy - 80, 30, color(255, 200, 0), color(200, 80, 0));

@@ -7,7 +7,6 @@ class Spring extends Season {
 
     // Initialize the exclusive animation elements for spring
     this.petals = [];
-    this.butterflies = [];
 
     // Petals cycle
     for (let i = 0; i < 15; i++) {
@@ -125,6 +124,36 @@ class Spring extends Season {
   // Draw branches
   drawBranches() {
 
+    // Draw brown connected branches
+    stroke(139, 69, 19); 
+    strokeWeight(3);
+    
+    // The brown branch on the left
+    line(this.cx - 130, this.cy - 40, this.cx - 160, this.cy - 80);
+    line(this.cx - 160, this.cy - 80, this.cx - 180, this.cy - 120);
+    line(this.cx - 180, this.cy - 120, this.cx - 180, this.cy - 150);
+    line(this.cx - 130, this.cy - 40, this.cx - 130, this.cy - 80);
+    line(this.cx - 130, this.cy - 40, this.cx - 80, this.cy - 40);
+    line(this.cx - 80, this.cy - 40, this.cx - 80, this.cy - 80);
+    line(this.cx - 80, this.cy - 80, this.cx - 50, this.cy - 150);
+    line(this.cx - 50, this.cy - 150, this.cx - 50, this.cy - 180);
+
+    // A brown branch connected to the trunk on the left
+    line(this.cx - 40, this.cy - 6, this.cx - 80, this.cy - 40);
+   
+    
+    // The brown branch on the right
+    line(this.cx + 40, this.cy - 40, this.cx + 90, this.cy - 80);
+    line(this.cx + 90, this.cy - 80, this.cx + 80, this.cy - 120);
+    line(this.cx + 80, this.cy - 120, this.cx + 110, this.cy - 150);
+    line(this.cx + 110, this.cy - 150, this.cx + 110, this.cy - 180);
+    line(this.cx + 40, this.cy - 40, this.cx + 40, this.cy - 80);
+
+    // A brown branch connected to the trunk on the right
+    line(this.cx + 0, this.cy - 5, this.cx + 40, this.cy - 40);
+
+    noStroke();
+    
     // Left branch
     this.doubleColorCircle(this.cx - 130, this.cy - 40, 40, color(100, 200, 120), color(255, 107, 107));
     this.doubleColorCircle(this.cx - 160, this.cy - 80, 30, color(255, 107, 107), color(100, 200, 120));

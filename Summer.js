@@ -192,27 +192,57 @@ class Summer extends Season {
     // Draw branches
 
     drawBranches() {
-        // Left branch
-        this.doubleColorCircle(this.cx - 140, this.cy - 30, 40, color(90, 180, 175), color(255, 180, 100));
-        this.doubleColorCircle(this.cx - 170, this.cy - 70, 30, color(255, 180, 100), color(90, 180, 175));
-        this.doubleColorCircle(this.cx - 190, this.cy - 110, 25, color(90, 180, 175), color(255, 180, 100));
-        this.doubleColorCircle(this.cx - 200, this.cy - 140, 20, color(255, 180, 100), color(90, 180, 175));
-        this.doubleColorCircle(this.cx - 140, this.cy - 70, 22, color(255, 180, 100), color(90, 180, 175));
 
-        // Middle branch
-        this.doubleColorCircle(this.cx - 80, this.cy - 30, 40, color(255, 180, 100), color(90, 180, 175));
+        // Draw yellow-brown connected branches 
+        stroke(205, 133, 63); 
+        strokeWeight(3);
+
+        //  The brown branch on the left
+        line(this.cx - 130, this.cy - 40, this.cx - 160, this.cy - 80);
+        line(this.cx - 160, this.cy - 80, this.cx - 180, this.cy - 120);
+        line(this.cx - 180, this.cy - 120, this.cx - 180, this.cy - 150);
+        line(this.cx - 130, this.cy - 40, this.cx - 130, this.cy - 80);
+        line(this.cx - 130, this.cy - 40, this.cx - 80, this.cy - 40);
+        line(this.cx - 80, this.cy - 40, this.cx - 80, this.cy - 80);
+        line(this.cx - 80, this.cy - 80, this.cx - 50, this.cy - 150);
+        line(this.cx - 50, this.cy - 150, this.cx - 50, this.cy - 180);
+        
+        // A brown branch connected to the trunk on the left
+        line(this.cx - 40, this.cy - 6, this.cx - 80, this.cy - 40); 
+
+        // The brown branch on the right
+        line(this.cx + 40, this.cy - 40, this.cx + 90, this.cy - 80);
+        line(this.cx + 90, this.cy - 80, this.cx + 80, this.cy - 120);
+        line(this.cx + 80, this.cy - 120, this.cx + 110, this.cy - 150);
+        line(this.cx + 110, this.cy - 150, this.cx + 110, this.cy - 180);
+        line(this.cx + 40, this.cy - 40, this.cx + 40, this.cy - 80);
+
+         // A brown branch connected to the trunk on the right
+        line(this.cx + 0, this.cy - 5, this.cx + 40, this.cy - 40); 
+
+        noStroke();
+
+        // Left round branches
+        this.doubleColorCircle(this.cx - 130, this.cy - 40, 40, color(90, 180, 175), color(255, 180, 100));
+        this.doubleColorCircle(this.cx - 160, this.cy - 80, 30, color(255, 180, 100), color(90, 180, 175));
+        this.doubleColorCircle(this.cx - 180, this.cy - 120, 25, color(90, 180, 175), color(255, 180, 100));
+        this.doubleColorCircle(this.cx - 180, this.cy - 150, 20, color(255, 180, 100), color(90, 180, 175));
+        this.doubleColorCircle(this.cx - 130, this.cy - 80, 22, color(255, 180, 100), color(90, 180, 175));
+        
+        // Middle round branches
+        this.doubleColorCircle(this.cx - 80, this.cy - 40, 40, color(255, 180, 100), color(90, 180, 175));
+        this.doubleColorCircle(this.cx - 20, this.cy - 120, 35, color(90, 180, 175), color(255, 180, 100));
+        this.doubleColorCircle(this.cx - 50, this.cy - 150, 25, color(255, 180, 100), color(90, 180, 175));
+        this.doubleColorCircle(this.cx - 50, this.cy - 180, 20, color(90, 180, 175), color(255, 180, 100));
         this.doubleColorCircle(this.cx - 80, this.cy - 80, 28, color(255, 180, 100), color(90, 180, 175));
-        this.doubleColorCircle(this.cx - 50, this.cy - 140, 25, color(255, 180, 100), color(90, 180, 175));
-        this.doubleColorCircle(this.cx - 50, this.cy - 170, 20, color(90, 180, 175), color(255, 180, 100));
-
-        // Right branch
-        this.doubleColorCircle(this.cx + 50, this.cy - 30, 40, color(90, 180, 175), color(255, 180, 100));
-        this.doubleColorCircle(this.cx + 100, this.cy - 70, 40, color(255, 180, 100), color(90, 180, 175));
-        this.doubleColorCircle(this.cx + 90, this.cy - 110, 32, color(90, 180, 175), color(255, 180, 100));
-        this.doubleColorCircle(this.cx + 120, this.cy - 140, 28, color(255, 180, 100), color(90, 180, 175));
-        this.doubleColorCircle(this.cx + 120, this.cy - 170, 22, color(90, 180, 175), color(255, 180, 100));
-        this.doubleColorCircle(this.cx + 50, this.cy - 70, 22, color(255, 180, 100), color(90, 180, 175));
-
+        
+        // Right round branches
+        this.doubleColorCircle(this.cx + 40, this.cy - 40, 40, color(90, 180, 175), color(255, 180, 100));
+        this.doubleColorCircle(this.cx + 90, this.cy - 80, 40, color(255, 180, 100), color(90, 180, 175));
+        this.doubleColorCircle(this.cx + 80, this.cy - 120, 32, color(90, 180, 175), color(255, 180, 100));
+        this.doubleColorCircle(this.cx + 110, this.cy - 150, 28, color(255, 180, 100), color(90, 180, 175));
+        this.doubleColorCircle(this.cx + 110, this.cy - 180, 22, color(90, 180, 175), color(255, 180, 100));
+        this.doubleColorCircle(this.cx + 40, this.cy - 80, 22, color(255, 180, 100), color(90, 180, 175));
     }
-}
 
+}
