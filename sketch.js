@@ -46,12 +46,12 @@ function draw() {
   drawTexture();
   drawQuadrantBorders();
   drawSpringCricle();
-  drawAutumnCricle()
-
+  
   for (let season of seasons) {
     season.draw();
  }
- 
+  drawWinterCricle();
+  
   // Update and display each snowflake in the array
   let currentTime = frameCount / 60;
 
@@ -115,12 +115,16 @@ function drawSpringCricle() {
   ellipse(width * 0.35 , height * 0.1, 30 + rms * 100, 30 + rms * 100);
 }
 
-function drawAutumnCricle() {
+function drawWinterCricle() {
   
   let rms = analyser4.getLevel();
-  fill(255,0,0);
- 
-  rect(width * 0.8 , height * 0.8, 30 + rms * 100, 30 + rms * 100);
+  fill(0);
+
+  for (let i = 0; i < 100; i++) {
+  // Cricle of water
+  fill(255, 100 - i*20); 
+  ellipse(width*0.735, height*0.63, 5 + rms*300 + i*20);
+}
 }
 
 
