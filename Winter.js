@@ -40,6 +40,7 @@ class Winter extends Season {
   drawBranches() {
 
     // Draw white-brown connected branches
+
     stroke(240, 240, 240);
     strokeWeight(3);
 
