@@ -6,13 +6,13 @@ Qiyue Ji | SID: 50181745 | unikey: qiji0008 | Individual component for creative 
 
 ### a). Seasonal Animation
 
-- The animation cycles through the four seasons: Spring, Summer, Autumn, and Winter.
+- The animation will play out the four seasons in turn: Spring, Summer, Autumn, and Winter.
 
 - Each season is displayed for approximately 2 seconds, creating a smooth transition from one to the next.
 
 ### b). Random Background and Moving Circles
 
-- Once the four seasons finish, a floating tree appears against a dynamic background of randomly positioned circles.
+- Once the four seasons finish, a floating tree appears against a random background of randomly positioned circles.
 
 - The circles update their positions every 0.3 seconds, and the background color changes every 3 seconds, creating a lively and ever-changing visual effect.
 
@@ -38,7 +38,7 @@ I was inspired by the OpenProcessing sketch “Four Seasons”, which repeatedly
 
 - Inspired by this, I implemented automatic seasonal transitions every few seconds in my animation.
 
-In addition to the knowledge learned in class,I also watched the YouTube tutorial “Random Walker in p5.js”, which helped me better understand the concept and guided the implementation of randomly moving circles with changing position, size, and color.
+In addition to the knowledge learned in class, I also watched the YouTube tutorial “Random Walker in p5.js”, which helped me better understand the concept and guided the implementation of randomly moving circles with changing position, size and color.
 
 ![reference 1](readmeImages/e06c9277f5cca1970f27e7ec85c9511.png)
 
