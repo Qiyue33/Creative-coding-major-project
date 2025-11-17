@@ -38,7 +38,7 @@ class Summer extends Season {
             });
         }
 
-         // Define global variables to prepare for the tree's growth animation.
+        // Define global variables to prepare for the tree's growth animation.
         this.scaleProgress = 0.6;
         this.scaleSpeed = 0.02;
         this.rotateAngle = 0;
@@ -84,7 +84,6 @@ class Summer extends Season {
             if (c.x > this.x + this.width + 50) {
                 c.x = this.x - 50;
             }
-
 
             noStroke();
             fill(255, 255, 255, 200);
@@ -139,7 +138,6 @@ class Summer extends Season {
 
         fill(135, 206, 250);
         rect(this.x + 30, this.y + 30, this.width - 60, this.height - 60);
-
     }
 
     // Draw the ground in the Summer quadrant
@@ -154,7 +152,7 @@ class Summer extends Season {
     drawGrass() {
         const noiseIndex = Math.floor(frameCount % valueArrayLength);
         const noiseVal = perlinNoiseArray[noiseIndex];
-        const grassMaxHeight = map(noiseVal, 0, 1, 15, 30); 
+        const grassMaxHeight = map(noiseVal, 0, 1, 15, 30);
 
         for (let i = 0; i < 50000; i++) {
             let r = random(20, 100);
@@ -180,26 +178,22 @@ class Summer extends Season {
         for (let i = 0; i < this.groundApples.length; i = i + 1) {
             let apple = this.groundApples[i];
 
-
             noStroke();
             fill(apple.r, apple.g, apple.b);
             ellipse(apple.x, apple.y, apple.size, apple.size * 0.9);
 
-
             fill(apple.r - 30, apple.g - 20, apple.b - 10);
             ellipse(apple.x, apple.y - apple.size * 0.3, apple.size * 0.3, apple.size * 0.2);
-
 
             stroke(101, 67, 33);
             strokeWeight(2);
             line(apple.x, apple.y - apple.size * 0.45, apple.x + 2, apple.y - apple.size * 0.6);
-
-
         }
     }
 
     // Draw the bottom of the trees
     drawBase() {
+
         noStroke();
         fill(230, 150, 80);
         rect(this.cx - 120, this.cy + 60, 40, 40);
@@ -207,10 +201,10 @@ class Summer extends Season {
         rect(this.cx - 80, this.cy + 60, 80, 40);
         fill(130, 200, 130);
         rect(this.cx, this.cy + 60, 40, 40);
-
     }
 
     drawStem() {
+
         const stemY = [this.cy + 40, this.cy, this.cy - 40, this.cy - 80, this.cy - 120];
 
         push();
@@ -228,7 +222,6 @@ class Summer extends Season {
 
         pop();
     }
-
 
     // Draw branches
 

@@ -43,7 +43,6 @@ class Winter extends Season {
     this.drawSnow();
   }
 
-  
 
   drawGround() {
     noStroke();
