@@ -1,6 +1,6 @@
 # Individual part_Qiyue Ji_SID:550181745
 
-Qiyue Ji | SID: 50181745 | unikey: qiji0008 | Individual component for creative coding major projects
+Qiyue Ji | SID: 550181745 | unikey: qiji0008 | Individual component for creative coding major projects
 
 ## 1. Instruction
 
