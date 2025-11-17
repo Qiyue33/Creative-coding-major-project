@@ -11,12 +11,12 @@ Building on the group's code, I applied the **Transformations** techniques learn
 
 ## References & Inspiration
 The flickering and gradually shrinking small flowers inspired me to come up with the idea of making the trees grow and shrink progressively. 
-![Inspiration - Flower Example](assets/Flower.png)(https://p5js.org/tutorials/data-structure-garden/)
+[![Inspiration - Flower Example](assets/Flower.png)](https://p5js.org/tutorials/data-structure-garden/)
 
 ## Technical Explanation
-I watched three tutorial videos on YouTube—*Perlin Noise in p5.js* and *Perlin Noise in Two Dimensions*。 Perlin Noise*—to deepen my understanding of the concept before proceeding with this project.
-![Technology 1 - Perlin Noise Basics](assets/Perlin%20Noise%20Basics.png)(https://youtu.be/Qf4dIN99e2w?si=wSmaXiwoSNXTtboR)
-![Technology 2 - 2D Perlin Noise](assets/2D%20Perlin%20Noise.png)(https://youtu.be/ikwNrFvnL3g?si=hckscPQlTFJCpJBz)
+I watched three tutorial videos on YouTube—*Perlin Noise in p5.js*, *Perlin Noise in Two Dimensions*, and *What is Perlin Noise*—to deepen my understanding of the concept before proceeding with this project.
+[![Technology 1 - Perlin Noise Basics](assets/Perlin%20Noise%20Basics.png)](https://youtu.be/Qf4dIN99e2w?si=wSmaXiwoSNXTtboR)
+[![Technology 2 - 2D Perlin Noise](assets/2D%20Perlin%20Noise.png)](https://youtu.be/ikwNrFvnL3g?si=hckscPQlTFJCpJBz)
 
 I drew inspiration from the snake game example in p5.js and applied, as well as integrated, similar interaction logic into my user input functionality.
-![Technology 4 - Loops Tutorial](assets/little%20snake.png)(https://p5js.org/tutorials/repeating-with-loops/)
+[![Technology 4 - Loops Tutorial](assets/little%20snake.png)](https://p5js.org/tutorials/repeating-with-loops/)
