@@ -1,12 +1,15 @@
-
+// Arrays to hold seasonal animations and snowflakes
 let seasons = [];
 let snowflakes = [];
+
+//Counter for switching seasons and interval between switches(this code is based on the Week 5 tutorial concepts of automating a periodic task.)
 let counter = 0;
 let interval = 2000;//Seasonal switching interval 
-let showRandomLine = false;// Should a random circle background be displayed
 
+// Should a random circle background be displayed
+let showRandomLine = false;
 
-// Declare global variables for circle positions
+// Declare global variables for circle positions(this code is based on the Week 6 tutorial concepts of a 'random walker' generative artwork.)
 let circlePositions = [];
 let numCircles = 3;
 let maxLineLength = 20;
@@ -17,9 +20,8 @@ let g;
 let b;
 let randomBgColor;
 
-
-let treeAmplitude = 50; //Tree fluctuation range
-
+//Tree fluctuation range
+let treeAmplitude = 150;
 
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -29,7 +31,6 @@ function setup() {
   for (let i = 0; i < 300; i++) {
     snowflakes.push(new Snowflake());
   }
-
 
   // Initialise circle positions to canvas centeromly set the initial RGB values between 0 and 255
   r = random(255);
@@ -41,8 +42,6 @@ function setup() {
   }
 
   randomBgColor = color(random(255), random(255), random(255));
-
-
 
   // Seasons change every 2 seconds
   setInterval(drawNextSeason, interval);
@@ -61,7 +60,6 @@ function draw() {
   if (showRandomLine) {
     background(randomBgColor, 10);
 
-
     // Draw random circles
     noStroke();
     for (let c of circlePositions) {
@@ -69,13 +67,11 @@ function draw() {
       ellipse(c.x, c.y, c.d);
     }
 
-
     // Trees floating up and down
     treeY = height / 2 + sin(frameCount * 0.02) * treeAmplitude;
     drawTree(width / 2, treeY);
 
     return;
-
   }
 
   // Seasonal animation stage
@@ -83,7 +79,7 @@ function draw() {
   drawTexture();
 
   if (seasons[counter]) {
-    seasons[counter].draw();
+    seasons[counter].draw();// Draw the current season
   }
 
   // Update and display each snowflake in the array
@@ -107,8 +103,6 @@ function updateRandomCirclePosition() {
 function changeRandomBgColor() {
   randomBgColor = color(random(255), random(255), random(255));
 }
-
-
 
 function drawNextSeason() {
   counter++;
@@ -140,7 +134,7 @@ function drawTexture() {
 // Draw a random circle
 function drawRandomCircle() {
 
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 3; i++) {
     let nextX = xPos + random(-maxLineLength, maxLineLength);
     let nextY = yPos + random(-maxLineLength, maxLineLength);
     // Constrain within virtual canvas bounds
@@ -160,16 +154,14 @@ function drawRandomCircle() {
     yPos = nextY;
 
   }
-
 }
 
+// Draw a tree after the four seasons of the cycle ended
 function drawTree(cx, cy) {
-
   drawBase(cx, cy);
   drawStem(cx, cy);
   drawBranches(cx, cy);
 }
-
 
 function drawBase(cx, cy) {
   noStroke();
@@ -189,7 +181,6 @@ function drawStem(cx, cy) {
 }
 
 function drawBranches(cx, cy) {
-
   // Draw brown connected branches (Winter: cool brown)
   stroke(240, 240, 240);
   strokeWeight(3);
@@ -250,7 +241,7 @@ function doubleColorCircle(x, y, d, c1, c2) {
   ellipse(x + d * 0.1, y - d * 0.1, d * 0.9);
 }
 
-
+// Adjust canvas size dynamically when window is resized
 function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
   initializeSeasons();
