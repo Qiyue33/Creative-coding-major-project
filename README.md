@@ -1,7 +1,6 @@
-# Individual part Qiyue Ji SID:550181745
+# Individual part_Qiyue Ji_SID:550181745
 
-Qiyue Ji | SID: 50181745 | unikey: qiji0008
-individual component for creative coding major projects
+Qiyue Ji | SID: 50181745 | unikey: qiji0008 | Individual component for creative coding major projects
 
 ## 1. Instruction
 
@@ -19,15 +18,15 @@ individual component for creative coding major projects
 
 ## 2. Drive Part: Details of my individual approach to animating the group code
 
-### My Animation type: Time-Based Animation
+### a). My Animation type: Time-Based Animation
 
-### Animation Properties
+### b). Animation Properties
 
 - The seasons change in sequence (spring → summer → autumn → winter).
 
 - Randomized floating circles with random background after seasons.
 
-### My unique contribution compared to group members:
+### c). My unique contribution compared to group members:
 
 - Implemented timer-controlled sequential seasonal transitions using setInterval().
 
@@ -45,7 +44,7 @@ In addition to the knowledge learned in class,I also watched the YouTube tutoria
 
 ## 4.Technical explanation
 
-1) setInterval()
+### a). setInterval()
 
 This part of my animation is built on the Week 5 “automate a periodic task” concept.
 
@@ -55,7 +54,7 @@ This part of my animation is built on the Week 5 “automate a periodic task” 
 
 - When the timer activates, the animation automatically switches to the next season in the sequence.
 
-2) Random Circle 
+### b). Random Circle 
 
 The random circle background system is based on the Week 6 “random walker” concept.
 
@@ -65,7 +64,7 @@ The random circle background system is based on the Week 6 “random walker” c
 
 Reference Links:
 
-[Link Text](https://openprocessing.org/sketch/478169)
+[Project_LSolomonExtra](https://openprocessing.org/sketch/478169)
 
 [Link Text](https://p5js.org/reference/p5/strokeWeight/)
 
