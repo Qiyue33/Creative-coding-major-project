@@ -19,7 +19,7 @@ function setup() {
 function draw() {
   background(120, 100, 160);
 
-  if (!isRacing) {
+  if (!isRacing) {   // Reference code source: https://p5js.org/tutorials/repeating-with-loops/
     drawTexture();
   }
   drawQuadrantBorders();
