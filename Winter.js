@@ -17,6 +17,8 @@ class Winter extends Season {
   }
 
   draw() {
+
+    this.drawBackground();
     this.drawGround();
 
     const noiseIndex = Math.floor(frameCount % valueArrayLength);
@@ -41,9 +43,11 @@ class Winter extends Season {
     this.drawSnow();
   }
 
+  
+
   drawGround() {
     noStroke();
-    fill(200, 220, 255, 150);
+    fill(56, 100, 180);
     rect(this.x, this.cy + 100, this.width, this.height);
     this.groundY = this.cy + 120;
   }
@@ -56,6 +60,27 @@ class Winter extends Season {
     rect(this.cx - 80, this.cy + 60, 80, 40);
     fill(50, 100, 150);
     rect(this.cx, this.cy + 60, 40, 40);
+  }
+
+  drawBackground() {
+    noStroke();
+    const bandWidth = 15;
+
+    // Set two colors
+    const color1 = color(111, 148, 205, 220);
+    const color2 = color(230, 235, 245, 220);
+
+    // Draw horizontal stripes in a loop
+    for (let x = 0; x < this.width; x += bandWidth) {
+
+      if (Math.floor(x / bandWidth) % 2 === 0) {
+        fill(color1);
+      } else {
+        fill(color2);
+      }
+
+      rect(this.x + x, this.y, bandWidth, this.height);
+    }
   }
 
   drawStem() {
