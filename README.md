@@ -34,13 +34,15 @@ Qiyue Ji | SID: 50181745 | unikey: qiji0008 | Individual component for creative 
 
 ## 3.References to inspiration for animating
 
-I was inspired by the OpenProcessing sketch at “Project_LSolomonExtra” which uses generative motion and transitions to create a dynamic landscape. This piece influenced my work in the following ways:
+I was inspired by the OpenProcessing sketch “Four Seasons”, which repeatedly refreshes different tree forms to represent the four seasons. This piece influenced my work in the following ways:
 
-- Building on this idea, I used a time-based approach to automatically cycle through Spring, Summer, Autumn, and Winter every few seconds, creating smooth, continuous transitions without user input.
+- Inspired by this, I implemented automatic seasonal transitions every few seconds in my animation.
 
 In addition to the knowledge learned in class,I also watched the YouTube tutorial “Random Walker in p5.js”, which helped me better understand the concept and guided the implementation of randomly moving circles with changing position, size, and color.
 
-![reference 1](readmeImages/a8ef955f65b14df8efd8763937bb0e6.png)
+![reference 1](readmeImages/e06c9277f5cca1970f27e7ec85c9511.png)
+
+![reference 2](readmeImages/a8ef955f65b14df8efd8763937bb0e6.png)
 
 ## 4.Technical explanation
 
@@ -63,6 +65,8 @@ The random circle background system is based on the Week 6 “random walker” c
 - Faster update interval (0.3s) for a lively effect
 
 Reference Links:
+
+[Four Seasons](https://openprocessing.org/sketch/586948/?utm_source=chatgpt.com)
 
 [Project_LSolomonExtra](https://openprocessing.org/sketch/478169)
 
